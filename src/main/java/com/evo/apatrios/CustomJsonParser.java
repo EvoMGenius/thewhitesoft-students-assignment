@@ -1,5 +1,6 @@
 package com.evo.apatrios;
 
+import com.evo.apatrios.model.Instruction;
 import com.evo.apatrios.model.Replacement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,19 +17,18 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.*;
 
-public class CustomJsonParser {
-
-    public static final String API_URL = "https://raw.githubusercontent.com/thewhitesoft/student-2022-assignment/main/data.json";
+public class CustomJsonParser implements JsonParser{
 
     /**
      * The result of this method is {@code List}, which contains all messages from Data.json
      * @return List
      */
-    public List<String> readDataJson() throws IOException, ParseException, InterruptedException {
+    @Override
+    public List<String> readDataFromApiToList(String api) throws IOException, ParseException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create(API_URL))
+                .uri(URI.create(api))
                 .build();
         HttpResponse<String> data = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONParser parser = new JSONParser();
@@ -39,12 +39,12 @@ public class CustomJsonParser {
      * The result of this method is {@code List}, which contains all objects from Replacement.json in reverse order
      * @return List
     */
-    public List<Replacement> readReplacementJson() throws IOException, ParseException {
-        File file = new File("info/replacement.json");
+    @Override
+    public List<Instruction> readInstructionFileToList(File file) throws IOException, ParseException {
         FileReader fr = new FileReader(file);
         JSONParser parser = new JSONParser();
         JSONArray array = (JSONArray) parser.parse(fr);
-        List<Replacement> list = new ArrayList<>();
+        List<Instruction> list = new ArrayList<>();
         Iterator i = array.iterator();
         while (i.hasNext()){
             JSONObject object = (JSONObject) i.next();
@@ -62,12 +62,13 @@ public class CustomJsonParser {
     /**
      * This method writes the received list to the received file
      */
-    public void writeListToJsonAndToFile(File resultFile, List<String> data) throws IOException {
+    @Override
+    public void writeListToJsonFile(List<String> data, File file)throws IOException {
         JSONArray resultArray = new JSONArray();
         resultArray.addAll(data);
-        FileWriter writer = new FileWriter(resultFile);
-        if(resultFile.exists()){
-            resultFile.createNewFile();
+        FileWriter writer = new FileWriter(file);
+        if(file.exists()){
+            file.createNewFile();
         }
         resultArray.writeJSONString(writer);
         writer.flush();
