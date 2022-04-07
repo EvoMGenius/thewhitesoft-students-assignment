@@ -1,4 +1,4 @@
-package com.evo.apatrios;
+package com.evo.apatrios.remoteDataUtils;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;

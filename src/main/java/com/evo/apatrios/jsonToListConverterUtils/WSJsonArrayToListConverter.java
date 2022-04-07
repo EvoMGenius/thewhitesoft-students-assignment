@@ -1,4 +1,4 @@
-package com.evo.apatrios;
+package com.evo.apatrios.jsonToListConverterUtils;
 
 import com.evo.apatrios.model.Instruction;
 import com.evo.apatrios.model.Replacement;

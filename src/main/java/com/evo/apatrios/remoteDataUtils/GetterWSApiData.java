@@ -1,5 +1,6 @@
-package com.evo.apatrios;
+package com.evo.apatrios.remoteDataUtils;
 
+import com.evo.apatrios.remoteDataUtils.GetterRemoteDataFromApi;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -10,7 +11,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class GetterWSApiData implements GetterRemoteDataFromApi{
+public class GetterWSApiData implements GetterRemoteDataFromApi {
 
     private final String api;
 

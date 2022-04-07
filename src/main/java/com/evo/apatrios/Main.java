@@ -1,7 +1,13 @@
 package com.evo.apatrios;
 
+import com.evo.apatrios.fileToJsonParserUtils.ParserFileToJsonArray;
+import com.evo.apatrios.fileToJsonParserUtils.ParserWSFileToJsonArray;
+import com.evo.apatrios.jsonToListConverterUtils.JsonArrayToListConverter;
+import com.evo.apatrios.jsonToListConverterUtils.WSJsonArrayToListConverter;
 import com.evo.apatrios.model.Instruction;
 import com.evo.apatrios.model.Replacement;
+import com.evo.apatrios.remoteDataUtils.GetterRemoteDataFromApi;
+import com.evo.apatrios.remoteDataUtils.GetterWSApiData;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
