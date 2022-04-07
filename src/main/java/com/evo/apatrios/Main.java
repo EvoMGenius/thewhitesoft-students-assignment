@@ -11,19 +11,24 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        File file = new File("info/replacement.json");
+        File instruction = new File("info/replacement.json");
         String api = "https://raw.githubusercontent.com/thewhitesoft/student-2022-assignment/main/data.json";
 
         //Объявляем собственный класс, выполняющий нашу основную работу с json файлами
-        JsonParser jsonHandler= new CustomJsonParser();
+        JsonArrayToListConverter jsonHandler= new WSJsonArrayToListConverter();
         //Список исходных сообщений
         List<String> data = null;
         //Список исправленных сообщений
         List<String> result = new ArrayList<>();
+
+        GetterRemoteDataFromApi getterDataFromApi = new GetterWSApiData(api);
+
+        ParserFileToJsonArray fileParser = new ParserWSFileToJsonArray();
+
         try {
-            data = jsonHandler.readDataFromApiToList(api);
+            data = jsonHandler.dataJsonArrayToList(getterDataFromApi.getDataFromApi());
             //Список подмен - то что нужно поменять и на что
-            List<Instruction> replacement = jsonHandler.readInstructionFileToList(file);
+            List<Instruction> replacement = jsonHandler.instructionsJsonArrayToList(fileParser.getJsonFromFile(instruction));
 
         /*
         Механизм поиска в исходных сообщениях тех самых измененных фрагментов
@@ -57,7 +62,7 @@ public class Main {
         //Создаем файл в который будет записываться результат работы
         File resultFile = new File("info/result.json");
         //Вызываем метод, выполняющий запись списка в файл
-        jsonHandler.writeListToJsonFile(result, resultFile);
+        fileParser.JsonToFile(jsonHandler.listToJsonArray(result), resultFile);
         } catch (IOException | ParseException | InterruptedException e) {
             e.printStackTrace();
         }
