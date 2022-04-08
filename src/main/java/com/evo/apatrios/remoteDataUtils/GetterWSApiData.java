@@ -14,18 +14,19 @@ import java.net.http.HttpResponse;
 public class GetterWSApiData implements GetterRemoteDataFromApi {
 
     private final String api;
+    private final HttpClient client;
 
     public String getApi() {
         return api;
     }
 
-    public GetterWSApiData(String api) {
+    public GetterWSApiData(String api, HttpClient httpClient) {
         this.api = api;
+        this.client = httpClient;
     }
 
     @Override
     public JSONArray getDataFromApi() throws ParseException, IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(api))

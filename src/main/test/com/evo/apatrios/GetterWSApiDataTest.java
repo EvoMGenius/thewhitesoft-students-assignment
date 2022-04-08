@@ -12,10 +12,9 @@ public class GetterWSApiDataTest {
     @Test
     void testApiCurrentData() throws ParseException, IOException, InterruptedException {
         //Arrange
-        GetterRemoteDataFromApi getter = new GetterWSApiData("https://raw.githubusercontent.com/thewhitesoft/student-2022-assignment/main/data.json");
 
         //Act
-        JSONArray data = getter.getDataFromApi();
+
         //Assert
         ;
     }
