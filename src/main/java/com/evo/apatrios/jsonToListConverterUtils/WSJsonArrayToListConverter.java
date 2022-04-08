@@ -26,17 +26,16 @@ public class WSJsonArrayToListConverter implements JsonArrayToListConverter {
     @Override
     public List<Instruction> instructionsJsonArrayToList(JSONArray json) throws IOException, ParseException {
         List<Instruction> list = new ArrayList<>();
-        Iterator i = json.iterator();
-        while (i.hasNext()){
-            JSONObject object = (JSONObject) i.next();
+        for (Object o : json) {
+            JSONObject object = (JSONObject) o;
             Object replacementObj = object.get("replacement");
             Object sourceObj = object.get("source");
-            String source=null;
-            if(sourceObj!=null){
-                source=sourceObj.toString();
+            String source = null;
+            if (sourceObj != null) {
+                source = sourceObj.toString();
             }
             String replacement = replacementObj.toString();
-            list.add(0,new Replacement(replacement,source));
+            list.add(0, new Replacement(replacement, source));
         }
         return list;
     }

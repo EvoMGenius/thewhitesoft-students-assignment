@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Вся завязка на WS специально!
+ */
 public class WSOutput {
     private final WSReplacementLogic logic;
     private final JsonArrayToListConverter jsonListConverter;
@@ -38,5 +41,4 @@ public class WSOutput {
     public void writeResultListToFile() throws IOException, ParseException, InterruptedException {
         fileJsonConverter.JsonToFile(jsonListConverter.listToJsonArray(logic.replacementLogic()),resultFile);
     }
-
 }

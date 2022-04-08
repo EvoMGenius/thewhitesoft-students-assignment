@@ -13,15 +13,14 @@ import java.net.http.HttpResponse;
 
 public class GetterWSApiData implements GetterRemoteDataFromApi {
 
-    private final String api;
+    private final String API = "https://raw.githubusercontent.com/thewhitesoft/student-2022-assignment/main/data.json";
     private final HttpClient client;
 
     public String getApi() {
-        return api;
+        return API;
     }
 
-    public GetterWSApiData(String api, HttpClient httpClient) {
-        this.api = api;
+    public GetterWSApiData( HttpClient httpClient) {
         this.client = httpClient;
     }
 
@@ -29,7 +28,7 @@ public class GetterWSApiData implements GetterRemoteDataFromApi {
     public JSONArray getDataFromApi() throws ParseException, IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create(api))
+                .uri(URI.create(API))
                 .build();
         HttpResponse<String> data = client.send(request, HttpResponse.BodyHandlers.ofString());
         JSONParser parser = new JSONParser();

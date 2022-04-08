@@ -21,9 +21,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        File instruction = new File("info/replacement.json");
         File result = new File("info/result.json");
-        WSOutput output = new WSOutput(new WSReplacementLogic(new WSInput(instruction)), result);
+        WSOutput output = new WSOutput(new WSReplacementLogic(new WSInput()), result);
 
         try {
             output.writeResultListToFile();

@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.net.http.HttpClient;
 import java.util.List;
 
+/**
+ * Вся завязка на WS специально!
+ */
 public class WSInput {
     private final File instruction;
-    static private final String API = "https://raw.githubusercontent.com/thewhitesoft/student-2022-assignment/main/data.json";
 
     private final ParserFileToJsonArray fileToJsonParser;
     private final GetterRemoteDataFromApi jsonFromApi;
@@ -28,11 +30,12 @@ public class WSInput {
      * файл для чтения инструкции replacement.json
      * Сделал специально в конструкторе инициализацию этих полей, ибо сейчас привязка под эту реализацию.
      */
-    public WSInput(File instruction) {
-        this.instruction = instruction;
+    public WSInput() {
         this.fileToJsonParser = new ParserWSFileToJsonArray();
-        this.jsonFromApi = new GetterWSApiData(API, HttpClient.newHttpClient());
+        this.jsonFromApi = new GetterWSApiData(HttpClient.newHttpClient());
         this.jsonToListConverter = new WSJsonArrayToListConverter();
+        this.instruction = this.fileToJsonParser.getInstruction();
+
     }
 
     public List<String> inputData() throws ParseException, IOException, InterruptedException {
@@ -42,5 +45,4 @@ public class WSInput {
     public List<Instruction> inputReplacement() throws IOException, ParseException {
         return jsonToListConverter.instructionsJsonArrayToList(fileToJsonParser.getJsonFromFile(instruction));
     }
-
 }
