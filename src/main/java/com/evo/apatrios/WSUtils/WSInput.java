@@ -26,8 +26,6 @@ public class WSInput {
     private final JsonArrayToListConverter jsonToListConverter;
 
     /**
-     * @param instruction
-     * файл для чтения инструкции replacement.json
      * Сделал специально в конструкторе инициализацию этих полей, ибо сейчас привязка под эту реализацию.
      */
     public WSInput() {
