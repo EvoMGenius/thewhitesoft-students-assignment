@@ -1,9 +1,7 @@
-package com.evo.apatrios.jsonToListConverterUtils;
+package com.evo.apatrios.tests;
 
 import com.evo.apatrios.fileToJsonParserUtils.ParserFileToJsonArray;
 import com.evo.apatrios.fileToJsonParserUtils.ParserWSFileToJsonArray;
-import com.evo.apatrios.remoteDataUtils.GetterRemoteDataFromApi;
-import com.evo.apatrios.remoteDataUtils.GetterWSApiData;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,8 +11,6 @@ import org.mockito.Mockito;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class GetterWSApiDataTest {
@@ -22,6 +18,7 @@ public class GetterWSApiDataTest {
     public void testCurrencyOfDataFromApi() throws ParseException, IOException{
         //Arrange
         HttpResponse response = Mockito.mock(HttpResponse.class);
+        //не знаю стоит ли мне делать mock httpClient, если да, то тогда бы пришлось в HttpRequest мокать
         Mockito.when(response.body()).thenReturn("[\n" +
                 "  \"Two roads diverged in a yellow d12324344rgg6f5g6gdf2ddjf,\",\n" +
                 "  \"Robert Frost poetAnd sorry I cou1d not trave1 both\",\n" +

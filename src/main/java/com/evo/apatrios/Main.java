@@ -3,20 +3,10 @@ package com.evo.apatrios;
 import com.evo.apatrios.WSUtils.WSInput;
 import com.evo.apatrios.WSUtils.WSOutput;
 import com.evo.apatrios.WSUtils.WSReplacementLogic;
-import com.evo.apatrios.fileToJsonParserUtils.ParserFileToJsonArray;
-import com.evo.apatrios.fileToJsonParserUtils.ParserWSFileToJsonArray;
-import com.evo.apatrios.jsonToListConverterUtils.JsonArrayToListConverter;
-import com.evo.apatrios.jsonToListConverterUtils.WSJsonArrayToListConverter;
-import com.evo.apatrios.model.Instruction;
-import com.evo.apatrios.model.Replacement;
-import com.evo.apatrios.remoteDataUtils.GetterRemoteDataFromApi;
-import com.evo.apatrios.remoteDataUtils.GetterWSApiData;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
