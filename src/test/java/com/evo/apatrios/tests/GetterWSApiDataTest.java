@@ -15,7 +15,7 @@ import java.net.http.HttpResponse;
 
 public class GetterWSApiDataTest {
     @Test
-    public void testCurrencyOfDataFromApi() throws ParseException, IOException{
+    public void testCorrectionOfDataFromApi() throws ParseException, IOException{
         //Arrange
         HttpResponse response = Mockito.mock(HttpResponse.class);
         //не знаю стоит ли мне делать mock httpClient, если да, то тогда бы пришлось в HttpRequest мокать
