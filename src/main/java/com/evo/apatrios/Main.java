@@ -23,8 +23,11 @@ public class Main {
 
         File instruction = new File("info/replacement.json");
         File result = new File("info/result.json");
-        WSOutput output = new WSOutput(new WSReplacementLogic(new WSInput(instruction)), result);
-
+        WSInput input = new WSInput(instruction);
+        WSReplacementLogic logic = new WSReplacementLogic();
+        logic.setInput(input);
+        WSOutput output = new WSOutput(result);
+        output.setLogic(logic);
         try {
             output.writeResultListToFile();
         } catch (IOException | ParseException | InterruptedException e) {

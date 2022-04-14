@@ -8,10 +8,9 @@ import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class WSOutput {
-    private final WSReplacementLogic logic;
+    private WSReplacementLogic logic;
     private final JsonArrayToListConverter jsonListConverter;
     private final ParserFileToJsonArray fileJsonConverter;
     private final File resultFile;
@@ -20,8 +19,11 @@ public class WSOutput {
         return logic;
     }
 
-    public WSOutput(WSReplacementLogic logic, File resultFile) {
+    public void setLogic(WSReplacementLogic logic) {
         this.logic = logic;
+    }
+
+    public WSOutput(File resultFile) {
         this.fileJsonConverter = new ParserWSFileToJsonArray();
         this.jsonListConverter = new WSJsonArrayToListConverter();
         this.resultFile = resultFile;
