@@ -9,4 +9,6 @@ import java.io.IOException;
 public interface ParserFileToJsonArray {
     JSONArray getJsonFromFile(File file) throws IOException, ParseException;
     void JsonToFile(JSONArray json, File file) throws IOException;
+    File getData();
+    File getInstruction();
 }

@@ -2,13 +2,16 @@ package com.evo.apatrios.WSUtils;
 
 import com.evo.apatrios.fileToJsonParserUtils.ParserFileToJsonArray;
 import com.evo.apatrios.fileToJsonParserUtils.ParserWSFileToJsonArray;
-import com.evo.apatrios.jsonToListConverterUtils.JsonArrayToListConverter;
-import com.evo.apatrios.jsonToListConverterUtils.WSJsonArrayToListConverter;
+import com.evo.apatrios.jsonToListConvertUtils.JsonArrayToListConverter;
+import com.evo.apatrios.jsonToListConvertUtils.WSJsonArrayToListConverter;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Вся завязка на WS специально!
+ */
 public class WSOutput {
     private WSReplacementLogic logic;
     private final JsonArrayToListConverter jsonListConverter;
@@ -40,5 +43,4 @@ public class WSOutput {
     public void writeResultListToFile() throws IOException, ParseException, InterruptedException {
         fileJsonConverter.JsonToFile(jsonListConverter.listToJsonArray(logic.replacementLogic()),resultFile);
     }
-
 }
