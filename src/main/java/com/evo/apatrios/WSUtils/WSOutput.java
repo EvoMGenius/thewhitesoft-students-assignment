@@ -13,21 +13,19 @@ import java.io.IOException;
  * Вся завязка на WS специально!
  */
 public class WSOutput {
-    private WSReplacementLogic logic;
 
+    private WSReplacementLogic logic;
     private final JsonArrayToListConverter jsonListConverter = new WSJsonArrayToListConverter();
     private final ParserFileToJsonArray fileJsonConverter = new ParserWSFileToJsonArray();
 
     private final File resultFile;
 
-    public WSReplacementLogic getLogic() {
-        return logic;
+    public WSOutput (File resultFile) {
+        this.resultFile = resultFile;
     }
 
-
-    public WSOutput (File resultFile) {
-
-        this.resultFile = resultFile;
+    public WSReplacementLogic getLogic() {
+        return logic;
     }
 
     public JsonArrayToListConverter getJsonListConverter() {

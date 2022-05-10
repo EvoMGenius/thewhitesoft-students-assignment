@@ -11,11 +11,7 @@ import java.util.List;
 public class WSReplacementLogic {
     private WSInput input;
 
-
-    private WSInput input;
-
     public WSReplacementLogic() {
-
     }
 
     public List<String> replacementLogic() throws ParseException, IOException, InterruptedException {

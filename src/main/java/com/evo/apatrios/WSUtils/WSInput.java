@@ -24,9 +24,6 @@ public class WSInput {
     private final GetterRemoteDataFromApi jsonFromApi;
     private final JsonArrayToListConverter jsonToListConverter = new WSJsonArrayToListConverter();
 
-    /**
-     * Сделал специально в конструкторе инициализацию этих полей, ибо сейчас привязка под эту реализацию.
-     */
     public WSInput() {
         this.jsonFromApi = new GetterWSApiData(HttpClient.newHttpClient());
         this.instruction = this.fileToJsonParser.getInstruction();
