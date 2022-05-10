@@ -13,10 +13,11 @@ import java.util.List;
  */
 public class WSReplacementLogic {
 
-    private final WSInput input;
 
-    public WSReplacementLogic(WSInput input) {
-        this.input = input;
+    private WSInput input;
+
+    public WSReplacementLogic() {
+
     }
 
     public List<String> replacementLogic() throws ParseException, IOException, InterruptedException {
@@ -53,4 +54,9 @@ public class WSReplacementLogic {
     public WSInput getInput() {
         return input;
     }
+
+    public void setInput(WSInput input) {
+        this.input = input;
+    }
+
 }

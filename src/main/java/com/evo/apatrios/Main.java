@@ -12,7 +12,11 @@ public class Main {
     public static void main(String[] args) {
 
         File result = new File("info/result.json");
-        WSOutput output = new WSOutput(new WSReplacementLogic(new WSInput()), result);
+        WSInput input = new WSInput();
+        WSReplacementLogic logic = new WSReplacementLogic();
+        logic.setInput(input);
+        WSOutput output = new WSOutput(result);
+        output.setLogic(logic);
         try {
             output.writeResultListToFile();
         } catch (IOException | ParseException | InterruptedException e) {
