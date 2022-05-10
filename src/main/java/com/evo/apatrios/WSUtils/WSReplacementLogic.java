@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Вся завязка на WS специально!
- */
 public class WSReplacementLogic {
+    private WSInput input;
 
 
     private WSInput input;

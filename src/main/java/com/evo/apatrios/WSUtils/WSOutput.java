@@ -14,15 +14,19 @@ import java.io.IOException;
  */
 public class WSOutput {
     private WSReplacementLogic logic;
+
     private final JsonArrayToListConverter jsonListConverter = new WSJsonArrayToListConverter();
     private final ParserFileToJsonArray fileJsonConverter = new ParserWSFileToJsonArray();
+
     private final File resultFile;
 
     public WSReplacementLogic getLogic() {
         return logic;
     }
 
+
     public WSOutput (File resultFile) {
+
         this.resultFile = resultFile;
     }
 
