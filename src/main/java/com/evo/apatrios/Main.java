@@ -23,10 +23,9 @@ public class Main {
         File result = new File("info/result.json");
 
         WSInput input = new WSInput();
-        WSReplacementLogic logic = new WSReplacementLogic();
-        logic.setInput(input);
-        WSOutput output = new WSOutput(result);
-        output.setLogic(logic);
+        WSReplacementLogic logic = new WSReplacementLogic(input);
+        WSOutput output = new WSOutput(logic,result);
+        //nit надеюсь правильно коммент указываю. может объявление output лучше сделать так?  WSOutput output = new WSOutput(new WSReplacementLogic( new WSInput()),result)
 
         try {
             output.writeResultListToFile();

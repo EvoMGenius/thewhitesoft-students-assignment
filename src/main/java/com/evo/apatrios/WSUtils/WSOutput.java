@@ -14,13 +14,14 @@ import java.io.IOException;
  */
 public class WSOutput {
 
-    private WSReplacementLogic logic;
+    private final WSReplacementLogic logic;
     private final JsonArrayToListConverter jsonListConverter = new WSJsonArrayToListConverter();
     private final ParserFileToJsonArray fileJsonConverter = new ParserWSFileToJsonArray();
 
     private final File resultFile;
 
-    public WSOutput (File resultFile) {
+    public WSOutput (WSReplacementLogic logic, File resultFile) {
+        this.logic = logic;
         this.resultFile = resultFile;
     }
 
@@ -40,7 +41,4 @@ public class WSOutput {
         fileJsonConverter.JsonToFile(jsonListConverter.listToJsonArray(logic.replacementLogic()),resultFile);
     }
 
-    public void setLogic(WSReplacementLogic logic) {
-        this.logic = logic;
-    }
 }

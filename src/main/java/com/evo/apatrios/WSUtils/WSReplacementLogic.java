@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WSReplacementLogic {
-    private WSInput input;
 
-    public WSReplacementLogic() {
+    private final WSInput input;
+
+    public WSReplacementLogic(WSInput input) {
+        this.input = input;
     }
 
     public List<String> replacementLogic() throws ParseException, IOException, InterruptedException {
@@ -49,8 +51,5 @@ public class WSReplacementLogic {
         return input;
     }
 
-    public void setInput(WSInput input) {
-        this.input = input;
-    }
 
 }
