@@ -13,23 +13,20 @@ import java.io.IOException;
  * Вся завязка на WS специально!
  */
 public class WSOutput {
-    private WSReplacementLogic logic;
-    private final JsonArrayToListConverter jsonListConverter;
-    private final ParserFileToJsonArray fileJsonConverter;
+
+    private final WSReplacementLogic logic;
+    private final JsonArrayToListConverter jsonListConverter = new WSJsonArrayToListConverter();
+    private final ParserFileToJsonArray fileJsonConverter = new ParserWSFileToJsonArray();
+
     private final File resultFile;
+
+    public WSOutput (WSReplacementLogic logic, File resultFile) {
+        this.logic = logic;
+        this.resultFile = resultFile;
+    }
 
     public WSReplacementLogic getLogic() {
         return logic;
-    }
-
-    public void setLogic(WSReplacementLogic logic) {
-        this.logic = logic;
-    }
-
-    public WSOutput(File resultFile) {
-        this.fileJsonConverter = new ParserWSFileToJsonArray();
-        this.jsonListConverter = new WSJsonArrayToListConverter();
-        this.resultFile = resultFile;
     }
 
     public JsonArrayToListConverter getJsonListConverter() {
@@ -43,4 +40,5 @@ public class WSOutput {
     public void writeResultListToFile() throws IOException, ParseException, InterruptedException {
         fileJsonConverter.JsonToFile(jsonListConverter.listToJsonArray(logic.replacementLogic()),resultFile);
     }
+
 }

@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WSReplacementLogic {
-    private WSInput input;
 
-    public void setInput(WSInput input) {
+    private final WSInput input;
+
+    public WSReplacementLogic(WSInput input) {
         this.input = input;
     }
 

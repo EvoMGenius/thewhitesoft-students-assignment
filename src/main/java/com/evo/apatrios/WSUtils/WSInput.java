@@ -20,17 +20,12 @@ import java.util.List;
 public class WSInput {
     private final File instruction;
 
-    private final ParserFileToJsonArray fileToJsonParser;
+    private final ParserFileToJsonArray fileToJsonParser = new ParserWSFileToJsonArray();
     private final GetterRemoteDataFromApi jsonFromApi;
-    private final JsonArrayToListConverter jsonToListConverter;
+    private final JsonArrayToListConverter jsonToListConverter = new WSJsonArrayToListConverter();
 
-    /**
-     * Сделал специально в конструкторе инициализацию этих полей, ибо сейчас привязка под эту реализацию.
-     */
     public WSInput() {
-        this.fileToJsonParser = new ParserWSFileToJsonArray();
         this.jsonFromApi = new GetterWSApiData(HttpClient.newHttpClient());
-        this.jsonToListConverter = new WSJsonArrayToListConverter();
         this.instruction = this.fileToJsonParser.getInstruction();
 
     }
